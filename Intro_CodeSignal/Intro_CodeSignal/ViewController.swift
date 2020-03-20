@@ -14,5 +14,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+
+    // MARK: - Task 2
+    func centuryFromYear(year: Int) -> Int {
+        return (year + 99) / 100
+    }
+
+    // MARK: - Task 3
+    func checkPalindrome(inputString: String) -> Bool {
+      return String(inputString.reversed()) == inputString
+    }
+    
+    // MARK: - Task 4
+    func adjacentElementsProduct(inputArray: [Int]) -> Int {
+        let res = stride(from: 0, to: inputArray.count - 1, by: 1).map {
+            inputArray[$0] * inputArray[$0 + 1]
+        }
+        return res.max()!
+    }
+
 }
 
