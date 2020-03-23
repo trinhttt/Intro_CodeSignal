@@ -94,8 +94,10 @@ class ViewController: UIViewController {
         }
         return true
     }
+    
+    // only pass 18/21 test: xem cach lam hui
     func ok1_isIPv4Address(inputString: String) -> Bool {
-        var components = inputString.components(separatedBy: ".").map { Int($0) }
+        let components = inputString.components(separatedBy: ".").flatMap { Int($0) }
         
         if components.count != 4 {
             return false
@@ -104,10 +106,13 @@ class ViewController: UIViewController {
         return components.filter { $0 > -1 && $0 <= 255 }.count == 4
     }
 
+    // only pass 17/21 test: xem cach lam hui
     func ok2_isIPv4Address(inputString: String) -> Bool {
         let values = inputString.components(separatedBy: ".").map { Int($0) }
         return values.count == 4 && !values.contains { $0 == nil || !(0..<256).contains($0!) }
     }
+    
+    
 
 
 
