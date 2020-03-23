@@ -62,6 +62,55 @@ class ViewController: UIViewController {
      return Int( pow(Double(n), 2) + pow(Double(n - 1), 2)  )
     }
 
+    // MARK: - Task 6
+    func makeArrayConsecutive2(statues: [Int]) -> Int {
+        return statues.max()! - statues.min()! - statues.count + 1
+    }
+    
+    func almostIncreasingSequence(sequence: [Int]) -> Bool {
+        var count = 0
+        for (i, num) in sequence.enumerated() {
+            if i < sequence.count - 1 {
+                if num - sequence[i + 1] < 0 {
+                    count += 1
+                    if count == 2 {
+                        return false
+                    }
+                }
+            }
+        }
+        return true
+    }
+    
+    // MARK: - Task 21
+    func isIPv4Address(inputString: String) -> Bool {
+        guard !inputString.contains("..") else { return false }
+        let inputArr = inputString.split(separator: ".")
+        guard inputArr.count == 4 else { return false }
+        for str in inputArr {
+            if str.count > 1 && Array(str)[0] == "0"  { return false }
+            guard let num = Int(str) else { return false }
+            guard num >= 0 && num <= 255 else { return false}
+        }
+        return true
+    }
+    func ok1_isIPv4Address(inputString: String) -> Bool {
+        var components = inputString.components(separatedBy: ".").map { Int($0) }
+        
+        if components.count != 4 {
+            return false
+        }
+        
+        return components.filter { $0 > -1 && $0 <= 255 }.count == 4
+    }
+
+    func ok2_isIPv4Address(inputString: String) -> Bool {
+        let values = inputString.components(separatedBy: ".").map { Int($0) }
+        return values.count == 4 && !values.contains { $0 == nil || !(0..<256).contains($0!) }
+    }
+
+
+
 
 }
 
