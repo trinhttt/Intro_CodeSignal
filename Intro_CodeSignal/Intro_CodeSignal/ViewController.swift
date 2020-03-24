@@ -112,7 +112,32 @@ class ViewController: UIViewController {
         return values.count == 4 && !values.contains { $0 == nil || !(0..<256).contains($0!) }
     }
     
-    
+    // MARK: - Task 22
+    func avoidObstacles(inputArray: [Int]) -> Int {
+    let max = inputArray.max()!
+        for i in 1...max {
+            var temp = 0
+            while temp <= max {
+                temp += i
+                if inputArray.contains(temp) {
+                    temp = -1
+                    break
+                }
+            }
+            if temp != -1 {
+                return i
+            }
+        }
+    return max + 1
+}
+
+func BEST_avoidObstacles(inputArray: [Int]) -> Int {
+    var minimumJump = 1
+    while inputArray.map({ $0 % minimumJump }).contains(0) {
+        minimumJump += 1
+    }
+    return minimumJump
+}
 
 
 
