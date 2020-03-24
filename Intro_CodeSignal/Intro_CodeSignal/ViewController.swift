@@ -138,8 +138,56 @@ func BEST_avoidObstacles(inputArray: [Int]) -> Int {
     }
     return minimumJump
 }
+    
+// MARK: - Task 23
+func boxBlur(image: [[Int]]) -> [[Int]] {
+var resultArr: [[Int]] = []
+    for i in 0...image.count - 3 {
+        resultArr.append([])
+        for j in 0...image[0].count - 3 {
+            let num = calculateAverage(i: i, j: j, array: image)
+            resultArr[i].append(num)
+        }
+    }
+    return resultArr
+}
+
+func calculateAverage(i: Int, j: Int, array: [[Int]]) -> Int{
+    var sum = 0
+    for ii in i...i + 2 {
+        for jj in j...j + 2 {
+            sum += array[ii][jj]
+        }
+    }
+    return sum / 9
+}
+
+//other: NOTE: Use reduce for zArray
+func getArrayAverage(x: Int, y: Int, imageArray: [[Int]]) -> Int {
+    var average:Int = 0
+    for xArray in imageArray[y...(y+2)] {
+        average += xArray[x...(x+2)].reduce(0, +)
+    }
+    
+    return Int((Double(average)/9).rounded(.down))
+    
+}
 
 
+func ok_boxBlur(image: [[Int]]) -> [[Int]] {
+    let sizeX = image[0].count - 2
+    let sizeY = image.count - 2
+    var result: [[Int]] = [[Int]]()
+    for yIndex in 0..<sizeY {
+        var xArray = [Int]()
+        for xIndex in 0..<sizeX {
+            let av = getArrayAverage(x:xIndex, y:yIndex, imageArray: image)
+            xArray.append(av)
+        }
+        result.append(xArray)
+    } 
+    return result
+}
 
 
 }
