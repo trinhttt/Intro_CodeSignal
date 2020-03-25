@@ -205,6 +205,18 @@ class ViewController: UIViewController {
     {
         return inputArray.map{$0 == elemToReplace ? substitutionElem : $0 }
     }
+    
+    // MARK: - Task 26
+    func evenDigitsOnly(n: Int) -> Bool {
+        var num = n
+        while num > 0 {
+            let temp = num % 10
+            if temp % 2 != 0 { return false }
+            num /= 10
+        }
+        return true
+    }
+
 
     
     
