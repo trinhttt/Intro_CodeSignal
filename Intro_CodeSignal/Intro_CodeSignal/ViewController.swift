@@ -190,7 +190,7 @@ class ViewController: UIViewController {
     }
     
     // MARK: - Task 25
-
+    
     func arrayReplace(inputArray: [Int], elemToReplace: Int, substitutionElem: Int) -> [Int] {
         let resultArray = inputArray.map({ (num) -> Int in
             if num == elemToReplace {
@@ -200,7 +200,7 @@ class ViewController: UIViewController {
         })
         return resultArray
     }
-
+    
     func arrayReplace1(inputArray: [Int], elemToReplace: Int, substitutionElem: Int) -> [Int]
     {
         return inputArray.map{$0 == elemToReplace ? substitutionElem : $0 }
@@ -217,8 +217,27 @@ class ViewController: UIViewController {
         return true
     }
 
-
+    // MARK: - Task 27
+    // NOTE: String.fisrt
+    func variableName2(name: String) -> Bool {
+        guard let firstCharacter = name.first else { return false }
+        guard isLetter(firstCharacter) || firstCharacter == "_" else { return false }
+        for i in name {
+            if !isLetter(i) && !isNumberic(i) && i != "_"{
+                return false
+            }
+        }
+        return true
+    }
     
+    func isNumberic(_ letter: Character) -> Bool {
+        return letter >= "0" && letter <= "9"
+    }
+    
+    func isLetter(_ letter: Character) -> Bool {
+        return (letter >= "a" && letter <= "z") || (letter >= "A" && letter <= "Z")
+    }
     
 }
+
 
