@@ -218,8 +218,8 @@ class ViewController: UIViewController {
     }
 
     // MARK: - Task 27
-    // NOTE: String.fisrt
-    func variableName2(name: String) -> Bool {
+    // NOTE: String.first
+    func variableName(name: String) -> Bool {
         guard let firstCharacter = name.first else { return false }
         guard isLetter(firstCharacter) || firstCharacter == "_" else { return false }
         for i in name {
@@ -236,6 +236,38 @@ class ViewController: UIViewController {
     
     func isLetter(_ letter: Character) -> Bool {
         return (letter >= "a" && letter <= "z") || (letter >= "A" && letter <= "Z")
+    }
+        
+    // NOTE: Use NSRegularExpression
+    func OTHER_variableName(name: String) -> Bool {
+        let regex = try! NSRegularExpression(pattern: "^([a-zA-Z_])([a-zA-Z0-9_])*$", options: .caseInsensitive)
+        if regex.firstMatch(in: name, options: [], range: NSRange(location: 0, length: name.count)) != nil {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    // other check : ("0"..."9").contains(text)
+    func checkLetter(_ text: String) -> Bool {
+        if ("a"..."z").contains(text) {
+            return true
+        }
+        if ("A"..."Z").contains(text) {
+            return true
+        }
+        if ("0"..."9").contains(text) {
+            return true
+        }
+        if "_"==text {
+            return true
+        }
+        return false
+    }
+    
+    func checkDigit(_ text: String) -> Bool {
+        return ("0"..."9").contains(text)
     }
     
 }
