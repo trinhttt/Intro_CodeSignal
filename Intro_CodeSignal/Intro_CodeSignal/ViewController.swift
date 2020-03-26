@@ -270,6 +270,28 @@ class ViewController: UIViewController {
         return ("0"..."9").contains(text)
     }
     
+    // MARK: - Task 28
+    func alphabeticShift(inputString: String) -> String {
+        var a = inputString.utf8.map{ ($0 - 96) % 26 + 1 + 96 }
+        
+        return String(bytes: a, encoding: .utf8)!
+    }
+    
+    //other: use unicodeScalars
+    func alphabeticShift1(inputString: String) -> String {
+        var result = ""
+        for scalar in inputString.unicodeScalars {
+            if scalar.value == 122 {
+                result += "a"
+            } else {
+                let val = Unicode.Scalar(scalar.value + 1)
+                result += String(val!)
+            }
+        }
+        return result
+    }
+
+    
 }
 
 
