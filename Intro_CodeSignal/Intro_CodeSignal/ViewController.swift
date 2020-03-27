@@ -291,6 +291,19 @@ class ViewController: UIViewController {
         return result
     }
 
+    // MARK: - Task 29
+    
+    func chessBoardCellColor(cell1: String, cell2: String) -> Bool {
+        guard let a = cell1.utf8.first,let b = cell1.utf8.last,let c = cell2.utf8.first,let d = cell2.utf8.last else { return false }
+        return ( a + b + c + d ) % 2 == 0 ? true  : false
+    }
+    
+    // other:
+    func OTHER_chessBoardCellColor(cell1: String, cell2: String) -> Bool {
+        return  cell1.unicodeScalars.map {$0.value}.reduce(0, +) % 2 ==
+                cell2.unicodeScalars.map {$0.value}.reduce(0, +) % 2
+    }
+
     
 }
 
