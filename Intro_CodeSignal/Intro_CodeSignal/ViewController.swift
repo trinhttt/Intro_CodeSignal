@@ -303,8 +303,16 @@ class ViewController: UIViewController {
         return  cell1.unicodeScalars.map {$0.value}.reduce(0, +) % 2 ==
                 cell2.unicodeScalars.map {$0.value}.reduce(0, +) % 2
     }
-
     
+    // MARK: - Task 30
+    func circleOfNumbers(n: Int, firstNumber: Int) -> Int {
+        guard n != firstNumber else { return 0 }
+        return firstNumber >= n / 2 ? firstNumber - n / 2 : n/2 + firstNumber
+    }
+    
+    func ok_circleOfNumbers(n: Int, firstNumber: Int) -> Int {
+        return (firstNumber + n/2) % n
+    }    
 }
 
 
