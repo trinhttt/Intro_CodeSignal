@@ -312,7 +312,18 @@ class ViewController: UIViewController {
     
     func ok_circleOfNumbers(n: Int, firstNumber: Int) -> Int {
         return (firstNumber + n/2) % n
-    }    
+    }
+    
+    // MARK: - Task 31
+    func depositProfit(deposit: Int, rate: Int, threshold: Int) -> Int {
+        var yearCount = 0
+        var currentAmount = Double(deposit)
+        while currentAmount < Double(threshold) {
+            currentAmount += currentAmount * (Double(rate) / 100)
+            yearCount += 1
+        }
+        return yearCount
+    }
 }
 
 
