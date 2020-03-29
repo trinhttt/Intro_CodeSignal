@@ -324,6 +324,11 @@ class ViewController: UIViewController {
         }
         return yearCount
     }
+    
+    // MARK: - Task 32
+    func absoluteValuesSumMinimization(a: [Int]) -> Int {
+        return a[ (a.count-1)/2 ]
+    }
 }
 
 
