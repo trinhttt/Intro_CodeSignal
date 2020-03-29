@@ -329,6 +329,11 @@ class ViewController: UIViewController {
     func absoluteValuesSumMinimization(a: [Int]) -> Int {
         return a[ (a.count-1)/2 ]
     }
+    
+    //other:
+    func absoluteValuesSumMinimization2(a: [Int]) -> Int {
+        return a[a.count % 2 == 0 ? a.count / 2 - 1 : a.count / 2]
+    }
 }
 
 
