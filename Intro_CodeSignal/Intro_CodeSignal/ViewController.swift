@@ -334,6 +334,17 @@ class ViewController: UIViewController {
     func absoluteValuesSumMinimization2(a: [Int]) -> Int {
         return a[a.count % 2 == 0 ? a.count / 2 - 1 : a.count / 2]
     }
+    // MARK: - Task 4
+    func extractEachKth(inputArray: [Int], k: Int) -> [Int] {
+        var resultArray = [Int]()    
+        for (index, value) in inputArray.enumerated() {
+            if (index+1) % k != 0 {
+                resultArray.append(value)
+            }
+        }
+        return resultArray   
+}
+
 }
 
 
